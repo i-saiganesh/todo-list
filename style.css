@@ -1,0 +1,235 @@
+:root {
+  --bg: #121212;
+  --container-bg: rgba(30, 30, 30, 0.6);
+  --input-bg: #2A2A2A;
+  --task-bg: #2A2A2A;
+  --hover: #333333;
+  --text: #E0E0E0;
+  --subtle: #A0A0A0;
+  --placeholder: #888888;
+  --accent: #64B5F6;
+}
+
+body.light {
+  --bg: #f5f5f5;
+  --container-bg: rgba(255, 255, 255, 0.8);
+  --input-bg: #e8e8e8;
+  --task-bg: #f0f0f0;
+  --hover: #d1d1d1;
+  --text: #2c2c2c;
+  --subtle: #6b6b6b;
+  --placeholder: #aaa;
+  --accent: #1E88E5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: url("images/background.png") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0;
+
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: flex-start; /* align near top */
+}
+
+.toggle-mode {
+  position: fixed;   /* fixed so it stays on screen */
+  top: 15px;
+  right: 20px;
+  font-size: 36px;   /* bigger size */
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s;
+  z-index: 9999;     /* above other content */
+}
+
+.toggle-mode:hover {
+  color: var(--accent);
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  margin-top: 10vh; /* push container down from top */
+  background: var(--container-bg);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+  font-family: 'Calisto MT', 'Albertus MT', serif;
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #F0BE6F;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #9b7c2f;
+}
+
+.input-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--hover);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 15px;
+  flex: 1;
+  min-width: 120px;
+  font-family: 'Calisto MT', 'Albertus MT', serif;
+  transition: border-color 0.2s;
+}
+
+input::placeholder {
+  color: var(--placeholder);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
+}
+
+button#add-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Calisto MT', 'Albertus MT', serif;
+  flex-shrink: 0;
+}
+
+button#add-btn:hover {
+  background: #42a5f5;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  background: var(--task-bg);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease;
+  transition: background 0.3s, opacity 0.3s;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task.completed .task-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-text {
+  margin-left: 10px;
+  font-family: 'Calisto MT', 'Albertus MT', serif;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 0.2px black);
+  transition: filter 0.2s ease;
+}
+
+.icon:hover {
+  filter: drop-shadow(0 0 1.5px #64B5F6);
+}
+
+.task-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.task-controls img {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 0.2px black);
+  transition: filter 0.2s ease;
+}
+
+.task-controls img:hover {
+  filter: drop-shadow(0 0 1.5px #F0BE6F);
+}
+
+.task small {
+  font-size: 12px;
+  color: var(--subtle);
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: 'Calisto MT', 'Albertus MT', serif;
+}
+
+.task small img {
+  width: 14px;
+  height: 14px;
+  filter: none;
+  cursor: default;
+  margin-right: 4px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .input-section {
+    flex-direction: column;
+  }
+  button#add-btn {
+    width: 100%;
+  }
+}
