@@ -1,7 +1,7 @@
 # ✨ Modern To-Do List
 
 A stylish and advanced **To-Do Manager** built using **HTML, CSS & JavaScript** with a dark luxury theme and smooth user experience.  
-Helps you plan your day with task categories, priorities, and deadlines — perfect for productivity lovers. 💪📝
+Helps you plan your day with task categories, priorities, and deadlines — perfect for productivity lovers! 💪📝
 
 ---
 
